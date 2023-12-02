@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "plugin:cypress/recommended",
-    "../.eslintrc.json",
-    "../.eslintrc.base.json"
-  ],
+  "extends": ["../../../.eslintrc.base.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -19,12 +15,11 @@
       "rules": {}
     },
     {
-      "files": ["*.cy.{ts,js,tsx,jsx}", "src/**/*.{ts,js,tsx,jsx}"],
-      "rules": {}
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "rules": {}
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/dependency-checks": "error"
+      }
     }
   ]
 }
