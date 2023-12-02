@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "plugin:cypress/recommended",
-    "../.eslintrc.json",
-    "../.eslintrc.base.json"
-  ],
+  "extends": ["plugin:cypress/recommended", "../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -24,7 +20,9 @@
     },
     {
       "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
       "rules": {}
     }
-  ]
+  ],
+  "plugins": ["@nx"]
 }
