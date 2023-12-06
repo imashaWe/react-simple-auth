@@ -1,0 +1,40 @@
+{
+  "name": "simple-auth",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "src/packages/react-simple-auth/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/src/packages/react-simple-auth",
+        "main": "src/packages/react-simple-auth/src/index.ts",
+        "tsConfig": "src/packages/react-simple-auth/tsconfig.lib.json",
+        "assets": ["src/packages/react-simple-auth/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs simple-auth {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "src/packages/react-simple-auth/**/*.ts",
+          "src/packages/react-simple-auth/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "src/packages/react-simple-auth/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
